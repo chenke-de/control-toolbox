@@ -64,7 +64,7 @@ else()
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-    find_package(PythonLibs 3 QUIET)
+	find_package(PythonLibs 3 QUIET)
     if (PYTHONLIBS_FOUND)
         message(STATUS "Found python 3")
         list(APPEND ct_core_COMPILE_DEFINITIONS PLOTTING_ENABLED)

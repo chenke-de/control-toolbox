@@ -8,6 +8,12 @@ Licensed under the BSD-2 license (see LICENSE file in main directory)
 namespace ct {
 namespace optcon {
 
+template <size_t STATE_DIM, size_t CONTROL_DIM, typename SCALAR> std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& ConstraintContainerAnalytical<STATE_DIM, CONTROL_DIM, SCALAR>::getIntermediateConstraintsInstances() { return constraintsIntermediate_; }
+template <size_t STATE_DIM, size_t CONTROL_DIM, typename SCALAR> const std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& ConstraintContainerAnalytical<STATE_DIM, CONTROL_DIM, SCALAR>::getIntermediateConstraintsInstances() const { return constraintsIntermediate_; }
+template <size_t STATE_DIM, size_t CONTROL_DIM, typename SCALAR> std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& ConstraintContainerAnalytical<STATE_DIM, CONTROL_DIM, SCALAR>::getTerminalConstraintsInstances() { return constraintsTerminal_; }
+template <size_t STATE_DIM, size_t CONTROL_DIM, typename SCALAR> const std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& ConstraintContainerAnalytical<STATE_DIM, CONTROL_DIM, SCALAR>::getTerminalConstraintsInstances() const { return constraintsTerminal_; }
+
+
 template <size_t STATE_DIM, size_t CONTROL_DIM, typename SCALAR>
 ConstraintContainerAnalytical<STATE_DIM, CONTROL_DIM, SCALAR>::ConstraintContainerAnalytical()
 {

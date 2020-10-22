@@ -195,6 +195,8 @@ public:
 	 */
     virtual void changeLinearSystem(const typename OptConProblem_t::LinearPtr_t& lin) override;
 
+    virtual void changeGeneralConstraints(const typename OptConProblem_t::ConstraintPtr_t& con);
+
     virtual SCALAR getCost() const override;
 
     //! get a reference to the current settings

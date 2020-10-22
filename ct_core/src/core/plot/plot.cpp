@@ -59,7 +59,8 @@
                                  std::to_string(arg2) + ")");
 
 #ifdef PLOTTING_ENABLED
-#include <Python.h>
+//#include <Python.h>
+#include "/usr/include/python3.6m/Python.h"
 
 #define PyString_FromString PyUnicode_FromString
 #define PyInt_FromLong PyLong_FromLong
