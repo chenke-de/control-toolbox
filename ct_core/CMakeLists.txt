@@ -21,8 +21,8 @@ find_package(Eigen3 REQUIRED)
 find_package(Boost COMPONENTS REQUIRED)
 
 ## find and include optional dependencies
-find_package(LLVM QUIET)
-find_package(Clang QUIET)
+find_package(llvm QUIET)
+find_package(clang QUIET)
 if(LLVM_FOUND AND CLANG_FOUND)
     message(STATUS "Found LLVM/CLANG version " ${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR})
     set (LLVM ON)
@@ -64,7 +64,7 @@ else()
 endif()
 
 if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-	find_package(PythonLibs 3 QUIET)
+    find_package(PythonLibs 3 QUIET)
     if (PYTHONLIBS_FOUND)
         message(STATUS "Found python 3")
         list(APPEND ct_core_COMPILE_DEFINITIONS PLOTTING_ENABLED)
@@ -99,13 +99,11 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/ct/core/templateDir.h.in ${CM
 
 ## define the directories to be included in all ct_core targets
 list(APPEND ct_core_target_include_dirs ${EIGEN3_INCLUDE_DIR})
-if(${Python_FOUND})
-	if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-	    list(APPEND ct_core_target_include_dirs ${PYTHON_INCLUDE_DIRS})
-	else()
-	    list(APPEND ct_core_target_include_dirs ${Python_INCLUDE_DIRS})
-	    list(APPEND ct_core_target_include_dirs ${Python_NumPy_INCLUDE_DIRS})
-	endif()
+if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+    list(APPEND ct_core_target_include_dirs ${PYTHON_INCLUDE_DIRS})
+else()
+    list(APPEND ct_core_target_include_dirs ${Python_INCLUDE_DIRS})
+    list(APPEND ct_core_target_include_dirs ${Python_NumPy_INCLUDE_DIRS})
 endif()
 list(APPEND ct_core_target_include_dirs ${QWT_INCLUDE_DIR})
 list(APPEND ct_core_target_include_dirs $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
@@ -148,8 +146,6 @@ target_link_libraries(ct_core INTERFACE
     dl # required for gcc compatibility
     )
 
-set(ct_core ct_core CACHE INTERNAL "ct_core library target.")
-set(ct_plot ct_plot CACHE INTERNAL "ct_plot library target.")
 
 ##################
 # BUILD EXAMPLES #

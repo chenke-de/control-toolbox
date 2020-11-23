@@ -127,6 +127,7 @@ public:
     virtual bool initializeIntermediate() override;
 
     virtual bool initializeTerminal() override;
+
     std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& getIntermediateConstraintsInstances();
     const std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& getIntermediateConstraintsInstances() const;
     std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>>& getTerminalConstraintsInstances();
@@ -146,6 +147,7 @@ private:
 	 *             Throws a runtime error if not.
 	 */
     void checkTerminalConstraints();
+
 
     std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>> constraintsIntermediate_;
     std::vector<std::shared_ptr<ConstraintBase<STATE_DIM, CONTROL_DIM, SCALAR>>> constraintsTerminal_;

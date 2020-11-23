@@ -1,10 +1,8 @@
 cmake_minimum_required (VERSION 3.5)
 
-if(NOT TARGET clang-format)
-	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/compilerSettings.cmake)
-	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/explicitTemplateHelpers.cmake)
-	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/clang-cxx-dev-tools.cmake)
-endif()
+include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/compilerSettings.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/explicitTemplateHelpers.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/clang-cxx-dev-tools.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/ct-cmake-helpers.cmake)
 
 
@@ -14,9 +12,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wfatal-errors -std=c++14 -Wall -Wno-unknown-pragmas")
 set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 
-if(NOT TARGET ${ct_rbd})
-	find_package(ct_rbd REQUIRED)
-endif()
+find_package(ct_rbd REQUIRED)
 find_package(Boost REQUIRED system filesystem)
 
 # extract interface compile definitions from previous ct packages as options
