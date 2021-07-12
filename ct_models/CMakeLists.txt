@@ -1,5 +1,9 @@
 cmake_minimum_required (VERSION 3.5)
 
+list(APPEND CMAKE_PREFIX_PATH "/opt")
+find_package(blasfeo QUIET)
+find_package(hpipm QUIET)
+
 if(NOT TARGET clang-format)
 	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/compilerSettings.cmake)
 	include(${CMAKE_CURRENT_SOURCE_DIR}/../ct/cmake/explicitTemplateHelpers.cmake)
